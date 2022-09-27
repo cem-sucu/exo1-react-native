@@ -1,27 +1,42 @@
-import React from "react";
+import React, { useState } from "react";
 import { View, Text, StyleSheet, Button } from "react-native";
 
 export default function App() {
+    const [text, setText] = useState(" ");
+
+    const [text2, setText2] = useState(" ");
+    const handlePress = () => {
+        setText2("bravo tu a cliqué sur le button 2");
+    };
+
+    const [name, setName] = useState("Je m'appel");
+    const handlePress2 = (arg) => {
+        setName(`Je m'appel ${arg}`);
+    };
     return (
         <View style={styles.wrapper}>
+            <Text>{text}</Text>
+            <Text>{text2}</Text>
+            <Text>{name}</Text>
             <Button
-                title="cliquez ici"
+                title="button 1"
+                onPress={() => setText("bravo tu a cliqué sur le button 1")}
+            ></Button>
+            <Button
+                onPress={handlePress}
+                title="button 2"
                 color="red"
                 accessibilityLabel="lire plus.."
-                disabled
-            />
+            ></Button>
+            <Button
+                title="Vous êtes"
+                onPress={() => handlePress2("Cem")}
+            ></Button>
         </View>
     );
 }
 
 const styles = StyleSheet.create({
-    container: {
-        color: "red",
-        marginTop: 50,
-        flexDirection: "row",
-        fontSize: 12,
-        fontWeight: "bold",
-    },
     wrapper: {
         marginTop: 50,
         fontSize: 20,
