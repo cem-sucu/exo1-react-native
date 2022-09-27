@@ -1,27 +1,30 @@
 import { View, Text, StyleSheet } from "react-native";
 import React from "react";
 
-const Person = ({ name, age }) => {
+const Person = ({ name, age, children }) => {
     return (
         <View style={styles.container}>
-            {
-                age ? (
-
-                    <Text>Je suis : {name} | age: {age}</Text>
-                    ) : (
-                        <Text>Je suis : {name}</Text> 
-                    )
-                }
-                </View>
-                );
-            };
+            {age ? (
+                <Text style={styles.container}>
+                    Je suis : {name} | age: {age} | {children}
+                </Text>
+            ) : (
+                <Text style={styles.container}>
+                    Je suis : {name} | {children}
+                </Text>
+            )}
+        </View>
+    );
+};
 
 export default function App() {
     return (
         <View style={styles.text}>
-            <Person name="Roger" />
-            <Person name="Stan" />
-            <Person name="Moris" age="14"/>
+            <Person name="Roger">Alien</Person>
+            <Person name="Stan">Human</Person>
+            <Person name="Moris" age="14">
+                Human
+            </Person>
         </View>
     );
 }
@@ -31,7 +34,7 @@ const styles = StyleSheet.create({
         color: "red",
         marginTop: 50,
         flexDirection: "row",
-        fontSize: 20,
+        fontSize: 12,
         fontWeight: "bold",
     },
     wrapper: {
@@ -44,7 +47,7 @@ const styles = StyleSheet.create({
         color: "yellow",
         marginTop: 50,
         flexDirection: "row",
-        fontSize: 20,
-        fontWeight: "bold",
+        fontSize: 12,
+        fontWeight: "bold",   
     },
 });
