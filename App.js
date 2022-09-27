@@ -4,7 +4,13 @@ import React from "react";
 export default function App() {
     return (
         <View>
-            <Text style={styles.container}>hello</Text>
+            <View style={styles.viewOne}>
+                <Text style={styles.container}>hello</Text>
+            </View>
+            <View style={styles.wrapper}>
+                <Text style={styles.container}>hello</Text>
+                <Text style={styles.container}>hello</Text>
+            </View>
         </View>
     );
 }
@@ -16,4 +22,10 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         fontSize: 20,
     },
+    wrapper: {
+        backgroundColor: "green",
+    },
+    viewOne: {
+        backgroundColor: "blue",
+    }
 });
