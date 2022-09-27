@@ -1,16 +1,28 @@
 import { View, Text, StyleSheet } from "react-native";
 import React from "react";
 
-export default function App() {
-
-    const getNames = (firstName, secondName, thirdName)=> {
-        // return firstName + " " + secondName + " " + thirdName;
-        return `${firstName} ${secondName} ${thirdName}`;
-    }
+const Person = ({ name, age }) => {
     return (
-        <Text style={styles.text}>
-            je m'appel {getNames("Capitaine", "Jack", "Sparrow")}
-        </Text>
+        <View style={styles.container}>
+            {
+                age ? (
+
+                    <Text>Je suis : {name} | age: {age}</Text>
+                    ) : (
+                        <Text>Je suis : {name}</Text> 
+                    )
+                }
+                </View>
+                );
+            };
+
+export default function App() {
+    return (
+        <View style={styles.text}>
+            <Person name="Roger" />
+            <Person name="Stan" />
+            <Person name="Moris" age="14"/>
+        </View>
     );
 }
 
