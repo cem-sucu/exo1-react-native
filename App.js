@@ -1,47 +1,27 @@
 import React, { useState } from "react";
-import { View, Text, StyleSheet, Button } from "react-native";
+import { View, Text, StyleSheet, TextInput, Button } from "react-native";
 
 export default function App() {
-    const [text, setText] = useState(" ");
+    const [name, setName] = useState();
+    const [age, setAge] = useState();
 
-    const [text2, setText2] = useState(" ");
-    const handlePress = () => {
-        setText2("bravo tu a cliqué sur le button 2");
-    };
-
-    const [name, setName] = useState("Je m'appel");
-    const handlePress2 = (arg) => {
-        setName(`Je m'appel ${arg}`);
-    };
-
-    const objet = {
-        name: "spiderman",
-        age: 17,
-    };
-    const [infos, setInfos] = useState(objet);
+    
 
     return (
         <View style={styles.wrapper}>
-            <Text>{text}</Text>
-            <Text>{text2}</Text>
-            <Text>{name}</Text>
-            <Button
-                title="button 1"
-                onPress={() => setText("bravo tu a cliqué sur le button 1")}
-            ></Button>
-            <Button
-                onPress={handlePress}
-                title="button 2"
-                color="red"
-                accessibilityLabel="lire plus.."
-            ></Button>
-            <Button
-                title="Vous êtes"
-                onPress={() => handlePress2("Cem")}
-            ></Button>
-            <Text>Nom : {infos.name}</Text>
-            <Text>Age : {infos.age}</Text>
-            <Button title="changer super héro" onPress={()=> setInfos({name:"Hulk", age:"44"})}></Button>
+            <Text style={styles.text}>Nom : {name}</Text>
+            <TextInput
+                placeholder="indiquez votre nom"
+                style={styles.textInput}
+                onChangeText={(val) => setName(val)}
+            />
+            <Text style={styles.text}>Age : {age} ans</Text>
+            <TextInput
+                placeholder="indiquez votre age"
+                style={styles.textInput}
+                onChangeText={(val) => setAge(val)}
+                keyboardType="numeric"
+            />
         </View>
     );
 }
@@ -49,14 +29,19 @@ export default function App() {
 const styles = StyleSheet.create({
     wrapper: {
         marginTop: 50,
-        fontSize: 20,
+        backgroundColor: "red",
+        alignItems: "center",
+        height: 220,
     },
-    viewOne: {
-        backgroundColor: "blue",
+    textInput: {
+        height: 40,
+        borderColor: "grey",
+        borderWidth: 1,
+        padding: 10,
+        margin: 9,
+        width: "90%",
     },
     text: {
-        fontFamily: "serif",
         fontSize: 20,
-        fontWeight: "bold",
     },
 });
