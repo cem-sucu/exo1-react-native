@@ -13,6 +13,13 @@ export default function App() {
     const handlePress2 = (arg) => {
         setName(`Je m'appel ${arg}`);
     };
+
+    const objet = {
+        name: "spiderman",
+        age: 17,
+    };
+    const [infos, setInfos] = useState(objet);
+
     return (
         <View style={styles.wrapper}>
             <Text>{text}</Text>
@@ -32,6 +39,9 @@ export default function App() {
                 title="Vous êtes"
                 onPress={() => handlePress2("Cem")}
             ></Button>
+            <Text>Nom : {infos.name}</Text>
+            <Text>Age : {infos.age}</Text>
+            <Button title="changer super héro" onPress={()=> setInfos({name:"Hulk", age:"44"})}></Button>
         </View>
     );
 }
