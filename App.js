@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, StyleSheet, TextInput, Button } from "react-native";
+import { View, Text, StyleSheet, ScrollView } from "react-native";
 
 export default function App() {
     const obj = [
@@ -35,18 +35,19 @@ export default function App() {
         },
     ];
     const [family, setFamily] = useState(obj);
-    console.log(family);
 
     return (
         <View style={styles.wrapper}>
-            {family.map((member) => {
-                return (
-                    <View key={member.id} style={styles.viewList}>
-                        <Text style={styles.text}>Nom : {member.name}</Text>
-                        <Text style={styles.text}>Age : {member.age}</Text>
-                    </View>
-                );
-            })}
+            <ScrollView>
+                {family.map((member) => {
+                    return (
+                        <View key={member.id} style={styles.viewList}>
+                            <Text style={styles.text}>Nom : {member.name}</Text>
+                            <Text style={styles.text}>Age : {member.age}</Text>
+                        </View>
+                    );
+                })}
+            </ScrollView>
         </View>
     );
 }
